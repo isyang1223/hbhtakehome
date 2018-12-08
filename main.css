@@ -1,0 +1,50 @@
+h1 {
+    text-align: center;
+}
+.h4 {
+    position: relative;
+    right: 0px;
+    display: inline-block;
+    margin-bottom: 10%;
+}
+
+#fullname {
+    display: inline-block;
+    width:25%;
+    margin-right: 2%;
+    margin-bottom: 10%;
+}
+#email {
+    display: inline-block;
+    width: 25%;
+    margin-right: 2%;
+    margin-bottom: 10%;
+}
+#medicinename {
+    display: inline-block;
+    width:25%;
+    margin-right: 2%;
+    margin-bottom: 10%;
+}
+#days {
+    display: inline-block;
+    width:25%;
+    margin-right: 2%;
+    margin-bottom: 10%;
+}
+#comments {
+    
+    width:50%;
+    margin-right: 2%;
+    margin-bottom: 10%;
+}
+.button{
+    display: block;
+     margin: auto;
+
+}
+.image{
+    display: inline-block;
+    float: right;
+    width: 35%;
+}
