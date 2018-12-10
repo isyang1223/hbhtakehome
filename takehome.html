@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Honeybee Health</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-   
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
-    <script>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Honeybee Health</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
       $(document).ready(function() {
           $("form").submit(function (e) {
               if(!$("#fullname").val()){
@@ -54,16 +55,17 @@
                   $("#reminder").html(
                       "<p>Hi " + firstnameCapitalized + "!</p><p>Thanks for signing up for a reminder for " + meds + ". We'll send it to " + email + " on " + someFormattedDate + ", to give you a little notice.</p>"
                   );
-                  
+
                   $.get(
-                      'https://api.fda.gov/drug/event.json?search="' + meds + '"&limit=5',
+                      'https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:"' + meds + '"&limit=5',
                       function (res) {
+                          console.log(res)
                           $("#medsss").html("<p>As a service, here are the possible drug reactions you shoud contact your doctor if you're expereincing:</p>")
-                          for (var i = 0; i < res.results.length; i++) {
-                              for (var j = 0; j < res.results[i].patient.reaction.length; j++)
-                                  if (res.results[i].patient.reaction[j].reactionmeddrapt) {
-                                      $("#medsss").append(
-                                          "<li>" +
+                          for (var i = 0; i
+            < res.results.length; i++) {
+                for (var j= 0; j <res.results[i].patient.reaction.length; j++)
+                if (res.results[i].patient.reaction[j].reactionmeddrapt) {
+                $(" #medsss" ).append("<li>" +
                                           res.results[i].patient.reaction[j].reactionmeddrapt +
                                           "</li>"
                                       );
@@ -77,54 +79,45 @@
               console.log(formData)
               e.preventDefault()
           });
-          
-
-
-        
       });
-    </script>
-  </head>
-  <body>
-      <div class="container">
-        <div>
-            <h1>Welcome to Honeybee Health</h1>
-        </div>
-        <div class="h4">
-            <h4>Sign-up for reminder emails!</h4>
-        </div>
-        <div class="image">
-            <img src="../rx_reminder.png" alt="">
-        </div>
-        <div class="">
-            <form>
-            <input class="form-control" type="text" name="fullname" id="fullname" placeholder="Full name"/> 
-            <input class="form-control" type="text" name="email" id="email" placeholder="Email" />
-        
-        
-            <input class="form-control" type="text" name="medicinename" id="medicinename" placeholder="Medicine name"/>
-            <select class="form-control" id="days" name="days" >
-                <option value="" disabled selected>Days supply of RX</option>
-                <option value="30"> 30Days supply of RX</option>
-                <option value="60"> 60Days supply of RX</option>
-                <option value="90"> 90Days supply of RX</option>
-                <option value="100">100Days supply of RX</option>
-                <option value="120"> 120Days supply of RX</option>
-        
-       
-        <textarea class="form-control" rows="5" name="comments" id="comments" placeholder="Comments" ></textarea>
-        
-       
-            <input class="btn btn-primary button" type="submit" value="Set Reminder" />
-            </form>
-        </div>
-
-            <div id="reminder">
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h1>Welcome to Honeybee Health</h1>
             </div>
-            
-
-            <div id="medsss">
-                
+            <div class="h4">
+                <h4>Sign-up for reminder emails!</h4>
             </div>
-    </div>
-  </body>
-</html>
+            <div class="image">
+                <img src="../rx_reminder.png" alt="">
+            </div>
+            <div class="">
+                <form>
+                    <input class="form-control" type="text" name="fullname"
+                        id="fullname" placeholder="Full name" />
+                    <input class="form-control" type="text" name="email"
+                        id="email" placeholder="Email" />
+                    <input class="form-control" type="text" name="medicinename"
+                        id="medicinename" placeholder="Medicine name" />
+                    <select class="form-control" id="days" name="days">
+                        <option value="" disabled selected>Days supply of RX</option>
+                        <option value="30"> 30Days supply of RX</option>
+                        <option value="60"> 60Days supply of RX</option>
+                        <option value="90"> 90Days supply of RX</option>
+                        <option value="100">100Days supply of RX</option>
+                        <option value="120"> 120Days supply of RX</option>
+                        <textarea class="form-control" rows="5" name="comments"
+                            id="comments" placeholder="Comments"></textarea>
+                        <input class="btn btn-primary button" type="submit"
+                            value="Set Reminder" />
+                    </form>
+                </div>
+                <div id="reminder">
+                </div>
+                <div id="medsss">
+                </div>
+            </div>
+        </body>
+    </html>
